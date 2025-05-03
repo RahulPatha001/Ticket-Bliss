@@ -16,10 +16,18 @@ public class UserBookingService {
     private List<User> userList ;
 
     // parameterized constructor
-    public UserBookingService(User user) throws IOException {
+    public UserBookingService(User user) {
         this.user = user;
+    }
+
+    // default constructor
+    public UserBookingService() throws IOException {
+        loadUsers();
+    }
+
+    public List<User> loadUsers() throws IOException{
         File users = new File(USERS_PATH );
-        userList = objmaper.readValue(users, new TypeReference<List<User>>() { });
+        return userList = objmaper.readValue(users, new TypeReference<List<User>>() { });
     }
 
     public Boolean loginUser(){
