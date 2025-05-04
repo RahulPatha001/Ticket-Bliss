@@ -1,9 +1,15 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Train {
     private String trainId;
     private String trainNo;
@@ -17,6 +23,10 @@ public class Train {
         this.stationTimes = stationTimes;
         this.seats = seats;
         this.trainNo = trainNo;
+    }
+
+    public Train(){
+
     }
 
     public String getTrainId() {
